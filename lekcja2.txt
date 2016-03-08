@@ -1,0 +1,98 @@
+> var result = db.grades.aggregate([{$match: {type: "homework"}},{$group: { {_id: "$student_
+id"}, lowest: { $min: "$score"}}}])                                                         
+2015-08-16T20:55:38.505+0200 E QUERY    SyntaxError: Unexpected token {                     
+> var result = db.grades.aggregate([{$match: {type: "homework"}},{$group: { _id: "$student_i
+d", lowest: { $min: "$score"}}}])                                                           
+> result                                                                                    
+{ "_id" : 199, "lowest" : 49.34223066136407 }                                               
+{ "_id" : 198, "lowest" : 17.46279901047208 }                                               
+{ "_id" : 197, "lowest" : 10.90872422518918 }                                               
+{ "_id" : 196, "lowest" : 93.83753702352544 }                                               
+{ "_id" : 192, "lowest" : 13.61971353656894 }                                               
+{ "_id" : 191, "lowest" : 23.01730758279615 }                                               
+{ "_id" : 188, "lowest" : 45.63350862897865 }                                               
+{ "_id" : 187, "lowest" : 69.48413603111369 }                                               
+{ "_id" : 184, "lowest" : 4.723720898314165 }                                               
+{ "_id" : 183, "lowest" : 13.6588948182553 }                                                
+{ "_id" : 179, "lowest" : 4.462315604823319 }                                               
+{ "_id" : 176, "lowest" : 1.527526147068703 }                                               
+{ "_id" : 175, "lowest" : 38.36994326083016 }                                               
+{ "_id" : 172, "lowest" : 85.98751160686062 }                                               
+{ "_id" : 171, "lowest" : 52.4190269388022 }                                                
+{ "_id" : 168, "lowest" : 43.1715730884068 }                                                
+{ "_id" : 167, "lowest" : 34.64171354462216 }                                               
+{ "_id" : 163, "lowest" : 24.2669623527782 }                                                
+{ "_id" : 160, "lowest" : 61.92939914869419 }                                               
+{ "_id" : 158, "lowest" : 46.26079200755071 }                                               
+Type "it" for more                                                                          
+> result.forEach(function(x){db.grades.remove({student_id: x._id, type: x.type})            
+...                                                                                         
+...                                                                                         
+> result.forEach(function(x){db.grades.remove({student_id: x._id, type: x.type})})          
+> db.grade.count()                                                                          
+0                                                                                           
+> db.grades.count()                                                                         
+800                                                                                         
+> result.forEach(function(x){db.test.insert({student_id: x._id, type: x.type})})            
+> db.insert.count()                                                                         
+0                                                                                           
+> result                                                                                    
+> var result = db.grades.aggregate([{$match: {type: "homework"}},{$group: { _id: "$student_i
+d", lowest: { $min: "$score"}}}])                                                           
+> result.forEach(function(x){db.test.insert({student_id: x._id, type: x.type})})            
+> show tables                                                                               
+grades                                                                                      
+system.indexes                                                                              
+test                                                                                        
+> db.test.count                                                                             
+function ( x ){                                                                             
+    return this.find( x ).count();                                                          
+}                                                                                           
+> db.test.count()                                                                           
+200                                                                                         
+> var result = db.grades.aggregate([{$match: {type: "homework"}},{$group: { _id: "$student_i
+d", lowest: { $min: "$score"}}}])                                                           
+> result.forEach(function(x){db.grades.remove({student_id: x._id, type: x.type})})          
+> db.grades.count()                                                                         
+800                                                                                         
+> db.test.findOne()                                                                         
+{                                                                                           
+        "_id" : ObjectId("55d0dda207dac82cfc5588b1"),                                       
+        "student_id" : 199,                                                                 
+        "type" : null                                                                       
+}                                                                                           
+> var asd = db.test.find()                                                                  
+> asd.forEach(function(x){db.grades.remove({student_id: x._id, type: x.type})})             
+> db.grades.count()                                                                         
+800                                                                                         
+> db.grades.findOne()                                                                       
+{                                                                                           
+        "_id" : ObjectId("50906d7fa3c412bb040eb57a"),                                       
+        "student_id" : 0,                                                                   
+        "type" : "homework",                                                                
+        "score" : 63.98402553675503                                                         
+}                                                                                           
+> var result = db.grades.aggregate([{$match: {type: "homework"}},{$group: { _id: "$student_i
+d", lowest: { $min: "$score"}}}])                                                           
+> result.forEach(function(x){db.grades.remove({student_id: x._id, score: x.score})})        
+> db.grades.count()                                                                         
+800                                                                                         
+> var result = db.grades.aggregate([{$match: {type: "homework"}},{$group: { _id: "$student_i
+d", lowest: { $min: "$score"}}}])                                                           
+> db.test.drop()                                                                            
+true                                                                                        
+> result.forEach(function(x){db.test.insert({student_id: x._id, score: x.lowest})})         
+> db.test.findOne()                                                                         
+{                                                                                           
+        "_id" : ObjectId("55d0df3207dac82cfc558979"),                                       
+        "student_id" : 199,                                                                 
+        "score" : 49.34223066136407                                                         
+}                                                                                           
+> result.forEach(function(x){db.grades.remove({student_id: x._id, score: x.lowest})})       
+> db.grades.count()                                                                         
+800                                                                                         
+> var result = db.grades.aggregate([{$match: {type: "homework"}},{$group: { _id: "$student_i
+d", lowest: { $min: "$score"}}}])                                                           
+> result.forEach(function(x){db.grades.remove({student_id: x._id, score: x.lowest})})       
+> db.grades.count()                                                                         
+600                                                                                         
